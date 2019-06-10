@@ -70,8 +70,7 @@ export default class App extends Component {
                 </ul>           
               </div>
             </nav>
-            <Switch>       
-              <Route exact path="/" render={ () => <Redirect to="/home" /> } />                 
+            <Switch>                                    
               {this.state.pages && this.state.pages.map( (page, index) => 
                 <Route exact path={'/' + page.formatted_url_slug__automatic_.value} render={ routeProps => <Page {...routeProps} page={page} /> } />
               )}                                       
