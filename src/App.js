@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {BrowserRouter, Route, Switch, Link, NavLink} from 'react-router-dom'
+import {BrowserRouter, Route, Switch, Link, NavLink, Redirect} from 'react-router-dom'
 import axios from 'axios'
 
 import Page from './Page'
@@ -44,6 +44,7 @@ export default class App extends Component {
             </div>
           </nav>
           <Switch>
+            <Route exact path="/" render={ () => <Redirect to="/home" /> } />
             {this.state.pages && this.state.pages.items.map( (page, index) => 
               <Route exact path={'/' + page.elements.untitled_url_slug.value} render={ routeProps => <Page {...routeProps} page={page} /> } />
             )}                                       
