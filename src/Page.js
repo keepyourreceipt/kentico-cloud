@@ -8,15 +8,14 @@ export default class Page extends Component {
         super(props)
     }
 
-    render = () => {
-        const elements = Object.keys(this.props.page.elements)
-        return (
-            elements.map( (element, index) => {
-                switch( element ) {
-                    case "text_editor__text_editor":
-                        return <TextEditor element={this.props.page.elements[element]} />
-                    case "image_gallery__gallery_images":
-                        return <ImageGallery element={this.props.page.elements[element]} />
+    render = () => {        
+        return (            
+            this.props.page.content_blocks.modular_content.map( (block, index) => {
+                switch( block.system.type ) {
+                    case "component__text_editor":
+                        return <TextEditor  block={block}/>
+                    case "component__image_gallery":
+                        return <ImageGallery />
                     default: return
                 }
             })
